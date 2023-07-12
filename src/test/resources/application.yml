@@ -1,0 +1,54 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api/v1/mycommunity/homes
+
+spring:
+  liquibase:
+    changeLog: "classpath:db/migration/db.changelog-master.yaml"
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE} # define the active profile, change from non-sql-db to sql-db to change the database type
+  datasource:
+    url: jdbc:mariadb://${MARIA_HOST}:3306/todolist
+    username: maria-user
+    password: hjg56dfSg6wf26h
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: todolist
+      username: mongo-user
+      password: asdf4a65s4dfa65df4
+      uri: mongodb://mongo-user:asdf4a65s4dfa65df4@${MONGO_HOST}:27017/todolist?authSource=admin
+  security:
+    user:
+      name: todo-admin-user
+      password: as32d1Tfa!2Ssd1f
+      roles: ADMIN
+
+swagger:
+  api:
+    base-package: com.mycommunity.homes
+    version: 1.0
+    title: Swagger API
+    description: API documentation
+    termsOfServiceUrl:
+    contact:
+    license:
+    licenseUrl:
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    docExpansion: none
+    operationsSorter: alpha
+    tagsSorter: alpha
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

@@ -1,0 +1,8 @@
+changeLogFile: classpath:db/migration/db.changelog-master.yaml
+url: jdbc:mariadb://${MARIA_HOST}:3306/todolist
+username: maria-user
+password: hjg56dfSg6wf26h
+driver: org.mariadb.jdbc.Driver
+outputChangeLogFile: src/main/resources/db/migration/db.changelog-master.yaml
+databaseChangeLogTableName: databasechangelog
+databaseChangeLogLockTableName: databasechangeloglock

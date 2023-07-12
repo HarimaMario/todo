@@ -1,0 +1,29 @@
+# Ignorar archivos de compilación
+target/
+build/
+out/
+
+# Ignorar archivos de IDEs comunes
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+*.classpath
+*.project
+*.settings/
+
+# Ignorar archivos de Maven
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+
+# Ignorar archivos de Gradle
+.gradle/
+build/
+
+# Ignorar archivos de NetBeans
+nbproject/private/
+mvnw
+mvnw.cmd

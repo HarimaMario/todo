@@ -1,0 +1,36 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-todo-task-table
+      author: Mario Escalante
+      changes:
+        - createTable:
+            tableName: todo_task
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: task_name
+                  type: varchar(255)
+              - column:
+                  name: created_by
+                  type: varchar(255)
+              - column:
+                  name: create_at
+                  type: datetime
+              - column:
+                  name: update_at
+                  type: datetime
+              - column:
+                  name: user_assign
+                  type: varchar(255)
+              - column:
+                  name: status
+                  type: varchar(255)
+              - column:
+                  name: task_description
+                  type: text

@@ -13,7 +13,6 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TodoTaskServiceTest {
@@ -26,71 +25,67 @@ public class TodoTaskServiceTest {
 
     @Test
     public void testGetAllTodoTasks() {
-        // Datos de prueba
+        // given data
         TodoTask todoTask1 = TodoTaskUtil.createTodotask();
         TodoTask todoTask2 = TodoTaskUtil.createTodotask();
         List<TodoTask> todoTasks = Arrays.asList(todoTask1, todoTask2);
 
-        // Configurar el comportamiento del repositorio mock
+        // when logic
         Mockito.when(todoTaskRepository.findAll()).thenReturn(todoTasks);
 
-        // Llamar al método del servicio
+        // Execute
         List<TodoTask> result = todoTaskService.getAllTodoTasks();
 
-        // Verificar el resultado
+        // Then review
         Assert.assertEquals(todoTasks, result);
     }
 
     @Test
     public void testCreateTodoTask() {
-        // Datos de prueba
+        // given data
         TodoTask todoTask = TodoTaskUtil.createTodotask();
 
-        // Configurar el comportamiento del repositorio mock
+        // when logic
         Mockito.when(todoTaskRepository.save(null, todoTask)).thenReturn(todoTask);
 
-        // Llamar al método del servicio
+        // Execute
         TodoTask createdTask = todoTaskService.createTodoTask(todoTask);
 
-        // Verificar que se haya guardado correctamente
+        // Then review
         Mockito.verify(todoTaskRepository).save(null, todoTask);
-
-        // Verificar el resultado
         Assert.assertEquals(todoTask, createdTask);
     }
 
     @Test
     public void testUpdateTodoTask() {
-        // Datos de prueba
+        // given data
         String taskId = "1";
         TodoTask todoTask = TodoTaskUtil.createTodotask();
 
-        // Configurar el comportamiento del repositorio mock
+        // when logic
         Mockito.when(todoTaskRepository.save(taskId, todoTask)).thenReturn(todoTask);
 
-        // Llamar al método del servicio
+        // Execute
         TodoTask updatedTask = todoTaskService.updateTodoTask(taskId, todoTask);
 
-        // Verificar que se haya actualizado correctamente
+        // Then review
         Mockito.verify(todoTaskRepository).save(taskId, todoTask);
-
-        // Verificar el resultado
         Assert.assertEquals(todoTask, updatedTask);
     }
 
     @Test
     public void testDeleteTodoTask() {
-        // Datos de prueba
+        // given data
         String taskId = "1";
         TodoTask todoTask = TodoTaskUtil.createTodotask();
 
-        // Configurar el comportamiento del repositorio mock
+        // when logic
         Mockito.doNothing().when(todoTaskRepository).deleteById(taskId);
 
-        // Llamar al método del servicio
+        // Execute
         todoTaskService.deleteTodoTaskById(taskId);
 
-        // Verificar que se haya eliminado correctamente
+        // Then review
         Mockito.verify(todoTaskRepository).deleteById(taskId);
     }
 }
